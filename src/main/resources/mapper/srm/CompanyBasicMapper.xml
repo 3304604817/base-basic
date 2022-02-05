@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.supers.srm.infra.mapper.CompanyBasicMapper">
+    <resultMap id="BaseResultMap" type="com.supers.srm.domain.entity.CompanyBasic">
+        <result column="id" property="id" jdbcType="DECIMAL"/>
+        <result column="company_name" property="companyName" jdbcType="VARCHAR"/>
+        <result column="file_url" property="fileUrl" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+    <insert id="insertCompanyBasic">
+        INSERT INTO company_basic(
+            company_name,
+            file_url
+        )
+        VALUES(
+                #{companyName, jdbcType = VARCHAR},
+                #{fileUrl, jdbcType = VARCHAR}
+        )
+    </insert>
+
+    <select id="selectCompanyBasic" resultMap="BaseResultMap">
+        SELECT id,
+               company_name,
+               file_url
+        FROM company_basic cb
+    </select>
+
+    <update id="updateSplmCompanyBasic">
+        UPDATE spfm_company_basic SET licence_url = #{licenceUrl, jdbcType = VARCHAR}
+        WHERE company_name = #{companyName, jdbcType = VARCHAR}
+        AND licence_url IS NULL
+    </update>
+
+    <update id="updateSplmSupplierBasic">
+        UPDATE sslm_supplier_basic SET licence_url = #{licenceUrl, jdbcType = VARCHAR}
+        WHERE company_name = #{companyName, jdbcType = VARCHAR}
+          AND licence_url IS NULL
+    </update>
+</mapper>
