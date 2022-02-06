@@ -53,7 +53,7 @@ spring:
     alibaba:
       seata:
         # 事务分组
-        tx-service-group: default
+        tx-service-group: base_tx_group
   redis:
     database: 0
     host: 39.101.202.67
