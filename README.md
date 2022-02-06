@@ -27,3 +27,5 @@ http://localhost:8086/swagger-ui/index.html#/
 
 # Nacos
 http://IP:8848/nacos/
+
+# Seata 分布式事务管理

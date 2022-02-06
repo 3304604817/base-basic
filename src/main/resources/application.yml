@@ -50,6 +50,10 @@ spring:
     sentinel:
       transport:
         dashboard: 39.101.202.67:8858
+    alibaba:
+      seata:
+        # 事务分组
+        tx-service-group: default
   redis:
     database: 0
     host: 39.101.202.67
@@ -113,3 +117,15 @@ minio:
   access-key: gaoyang
   secret-key: gaoyang@123
   bucket-name: private
+seata:
+  registry:
+    type: nacos
+    nacos:
+      server-addr: 39.101.202.67:8848
+      username: nacos
+      password: nacos
+  config:
+    nacos:
+      server-addr: 39.101.202.67:8848
+      username: nacos
+      password: nacos
