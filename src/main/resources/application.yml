@@ -129,3 +129,6 @@ seata:
       server-addr: 39.101.202.67:8848
       username: nacos
       password: nacos
+  service:
+    # 开启全局事务
+    disable-global-transaction: false
