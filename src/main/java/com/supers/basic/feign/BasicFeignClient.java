@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @FeignClient(
-        value = "basic",
+        value = "base-basic",
         fallback = BasicFeignClientFallBack.class
 )
 public interface BasicFeignClient {

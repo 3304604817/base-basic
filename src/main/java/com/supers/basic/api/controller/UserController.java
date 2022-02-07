@@ -55,18 +55,18 @@ public class UserController {
         return new ResponseEntity(iamUser, HttpStatus.OK);
     }
 
+    @Access(accessNoToken = true)
     @ApiOperation(value = "批量创建员工")
     @PostMapping("/batchInsert")
-    @CrossOrigin
     public ResponseEntity batchInsert(@RequestBody List<IamUser> iamUsers) {
         iamUsers = userService.batchInsert(iamUsers);
         return new ResponseEntity(iamUsers, HttpStatus.OK);
     }
 
+    @Access(accessNoToken = true)
     @ApiOperation(value = "更新员工信息")
     @PutMapping("/update")
-    @CrossOrigin
-    public ResponseEntity update(@RequestBody IamUser iamUser) {
+    public ResponseEntity<IamUser> update(@RequestBody IamUser iamUser) {
         iamUser = userService.update(iamUser);
         return new ResponseEntity(iamUser, HttpStatus.OK);
     }

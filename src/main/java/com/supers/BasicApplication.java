@@ -17,7 +17,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 @MapperScan(value = {"com.supers.basic.infra.mapper", "com.supers.srm.infra.mapper"}) // Mybatis Mapper接口文件位置，不用写@Mapper注解
 @RibbonClients(value = {
-				@RibbonClient(name = "basic", configuration = RandomRuleConfig.class)
+		@RibbonClient(name = "base-basic", configuration = RandomRuleConfig.class),
+		@RibbonClient(name = "base-business", configuration = RandomRuleConfig.class)
 })
 @EnableFeignClients
 public class BasicApplication {

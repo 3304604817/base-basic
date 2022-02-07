@@ -1,6 +1,7 @@
 package com.supers.basic.api.controller;
 
 import com.supers.basic.app.service.BasicService;
+import com.supers.basic.app.service.SeataService;
 import com.supers.basic.domain.entity.IamUser;
 import com.supers.basic.domain.repository.UserRepository;
 import com.supers.common.util.jwt.annotation.Access;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/seata")
 public class SeataController {
     @Autowired
-    private BasicService basicService;
+    private SeataService seataService;
     @Autowired
     private UserRepository userRepository;
 
@@ -24,6 +25,7 @@ public class SeataController {
     @ApiOperation(value = "分布式事务测试")
     @PostMapping("/transaction-test")
     public ResponseEntity transactionTest() {
+        seataService.transactionTest();
         return new ResponseEntity(HttpStatus.OK);
     }
 }
