@@ -1,5 +1,8 @@
 package com.supers.basic.domain.base;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import lombok.Data;
 
 import java.util.Date;
@@ -16,9 +19,11 @@ public class BaseEntity {
 
     private Long createdBy;
 
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd'T'HH:mm:ss")
     private Date creationDate;
 
     private Long lastUpdatedBy;
 
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd'T'HH:mm:ss")
     private Date lastUpdateDate;
 }

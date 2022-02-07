@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 )
 public interface BusinessFeignClient {
 
-    @Access(accessNoToken = true)
     @ApiOperation(value = "更新员工信息")
     @PutMapping("/user/update")
     public ResponseEntity<IamUser> update(@RequestBody IamUser iamUser);
