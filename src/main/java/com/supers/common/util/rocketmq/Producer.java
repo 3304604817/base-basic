@@ -111,10 +111,14 @@ public class Producer {
         for(int i = 0; i < msgBodys.size(); i++){
             try {
                 Message msg = new Message("TopicOrder", "TagDefault", msgBodys.get(i).getBytes(RemotingHelper.DEFAULT_CHARSET));
+                /**
+                 * arg 队列下标
+                 * arg=1 只往队列一发送消息
+                 */
                 SendResult sendResult = producer.send(msg, new MessageQueueSelector() {
                     @Override
                     public MessageQueue select(List<MessageQueue> mqs, Message msg, Object arg) {
-                        int mqIndex = (Integer) arg;
+                         int mqIndex = (Integer) arg;
                         return mqs.get(mqIndex);
                     }
                 }, 1);

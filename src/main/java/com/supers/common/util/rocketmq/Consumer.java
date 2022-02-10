@@ -28,6 +28,9 @@ import java.util.List;
 
 public class Consumer{
 
+    /**
+     * 普通消息消费者
+     */
     public static void consumerStart(String namesrvAddr, String consumerGroup) throws InterruptedException, MQClientException {
         DefaultMQPushConsumer consumer = new DefaultMQPushConsumer(consumerGroup);
         consumer.setNamesrvAddr(namesrvAddr);
@@ -36,10 +39,14 @@ public class Consumer{
 
         consumer.registerMessageListener(new MessageListenerConcurrently() {
             @Override
-            public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgs,
-                ConsumeConcurrentlyContext context) {
-                System.out.printf("%s Receive New Messages: %s %n", Thread.currentThread().getName(), msgs);
-                return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
+            public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgs, ConsumeConcurrentlyContext context) {
+                try {
+                    System.out.printf("%s Receive New Messages: %s %n", Thread.currentThread().getName(), msgs);
+                    return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
+                }catch (Exception e){
+                    e.printStackTrace();
+                    return ConsumeConcurrentlyStatus.RECONSUME_LATER;
+                }
             }
         });
 
