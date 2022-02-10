@@ -27,5 +27,8 @@ public class SeataServiceImpl implements SeataService {
 
         user.setEmail("db_business@qq.com");
         businessFeignClient.update(user);
+
+        String exception = null;
+        if(exception.equals(null));
     }
 }
