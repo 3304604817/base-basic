@@ -10,6 +10,7 @@ import java.util.Objects;
 
 /**
  * WorkTime
+ * 计算工作时常
  *
  * @author mqpearth
  * @date 2021.8.7 20:41
